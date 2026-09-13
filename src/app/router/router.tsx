@@ -90,6 +90,12 @@ const UsuariosPage = named(() => import('@/features/auth/pages/UsuariosPage'), '
 
 export const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
+  // Alias por pedido do Carlos: /admin abre a mesma tela de /login (a tela já é
+  // compartilhada staff+motorista — ver comentário em LoginPage.tsx). Não existe
+  // "login de admin" separado: depois de autenticar, RequireStaff/RequireOwner
+  // já decidem o que essa conta pode ver. Isso é só um endereço mais fácil de
+  // lembrar/divulgar pra quem administra a empresa.
+  { path: '/admin', element: <LoginPage /> },
   { path: '/quero-alugar', element: <CadastroLeadPage /> },
   { path: '/politica-privacidade', element: <PoliticaPrivacidadePage /> },
   { path: '/aceitar-convite', element: <AceitarConvitePage /> },
