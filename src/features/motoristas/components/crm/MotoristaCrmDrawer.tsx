@@ -16,6 +16,7 @@ import { diasNaEtapa } from '../../intelligence/funilMetrics';
 import { ArquivosTab } from '../tabs/ArquivosTab';
 import { StatusBadge } from '../StatusBadge';
 import { RegistrarConversaDialog } from './RegistrarConversaDialog';
+import { RodaScoreTab } from './RodaScoreTab';
 import { MOTORISTA_PRIORIDADE_COLOR, MOTORISTA_PRIORIDADE_LABEL, ORIGEM_LEAD_LABEL } from '../../types';
 
 function Stat({ label, value }: { label: string; value: string }) {
@@ -33,6 +34,11 @@ function Stat({ label, value }: { label: string; value: string }) {
 // Fase 2 — a maioria já existe em algum lugar (frota/intelligence/historicoMotoristas.ts tem
 // receita/lucro por motorista, por exemplo), mas juntar tudo aqui é build novo, não é
 // "básico" no sentido que a Fase 1 pediu.
+//
+// "Score de Retenção" aqui (driverScore.ts) é um score DIFERENTE do RodaScore (aba própria,
+// migration 0054): este mede retenção de motorista já ativo; o RodaScore mede triagem de
+// candidato antes da contratação. Renomeado de "Score PrimeCharge" pra não confundir os dois
+// na mesma tela.
 function ResumoTab({ motoristaId }: { motoristaId: string }) {
   const { data: motorista, isLoading } = useMotorista(motoristaId);
   const { data: etapas } = useFunilEtapas(motorista?.empresa_id);
@@ -48,7 +54,7 @@ function ResumoTab({ motoristaId }: { motoristaId: string }) {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <Stat label="Score RodaVolt" value={score !== null ? `${score}/100` : '—'} />
+        <Stat label="Score de Retenção" value={score !== null ? `${score}/100` : '—'} />
         <Stat label="Tempo de empresa" value={diasComoCliente !== null ? `${diasComoCliente} dia(s)` : '—'} />
         <Stat label="Dias na etapa atual" value={dias !== null ? `${dias} dia(s)` : '—'} />
       </div>
@@ -121,6 +127,11 @@ export function MotoristaCrmDrawer({ motoristaId, onOpenChange }: { motoristaId:
           <Tabs
             items={[
               { value: 'resumo', label: 'Resumo', content: <ResumoTab motoristaId={motoristaId} /> },
+              {
+                value: 'rodascore',
+                label: 'RodaScore',
+                content: <RodaScoreTab motoristaId={motoristaId} empresaId={usuario?.empresa_id ?? undefined} usuarioId={usuario?.id ?? undefined} />,
+              },
               { value: 'timeline', label: 'Timeline', content: <TimelinePanel entidadeTipo="motorista" entidadeId={motoristaId} /> },
               {
                 value: 'documentos',

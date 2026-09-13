@@ -83,7 +83,7 @@ export async function criarLeadPublico(dados: DadosLeadPublico): Promise<{ motor
       ja_dirige_app: paraBooleano(dados.ja_dirige_app),
       tempo_experiencia: dados.tempo_experiencia,
       apps_utilizados: dados.apps_utilizados ?? [],
-      km_semanal_estimado: dados.km_semanal_estimado,
+      km_semanal_km: dados.km_semanal_km,
       possui_veiculo_proprio: paraBooleano(dados.possui_veiculo_proprio),
       disponibilidade_horas: dados.disponibilidade_horas,
       referencia_nome: dados.referencia_nome,
@@ -93,6 +93,14 @@ export async function criarLeadPublico(dados: DadosLeadPublico): Promise<{ motor
       quando_pretende_comecar: dados.quando_pretende_comecar,
       melhor_horario_contato: dados.melhor_horario_contato,
       aceitou_politica_privacidade: dados.aceitou_politica_privacidade,
+
+      // RodaScore v1.0 (migration 0054) — Histórico de locações + Capacidade financeira
+      ja_alugou_veiculo_antes: paraBooleano(dados.ja_alugou_veiculo_antes),
+      locacao_anterior_sem_pendencias: paraBooleano(dados.locacao_anterior_sem_pendencias),
+      locacao_anterior_motivo_saida: dados.locacao_anterior_motivo_saida,
+      renda_mensal_declarada: dados.renda_mensal_declarada,
+      possui_outra_fonte_renda: paraBooleano(dados.possui_outra_fonte_renda),
+      possui_conta_bancaria: paraBooleano(dados.possui_conta_bancaria),
     },
   });
   if (error) throw error;
