@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import { Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Eye, EyeOff, ArrowLeft, ShieldCheck } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
@@ -30,8 +30,16 @@ import motoristaPhoto from '../assets/motorista-login.jpg';
 // preenchimento do wordmark trocado de branco pra preto (o ícone continua o
 // mesmo azul da marca) — pensada especificamente pra fundo claro, sem chip
 // escuro por trás.
+//
+// Selo "Acesso administrativo" (pedido do Carlos): quando essa mesma tela é
+// aberta via /admin (ver router.tsx — é só um alias de rota, não uma tela
+// nova), mostramos um selinho acima do título deixando claro que aquele
+// endereço é pra quem administra a empresa. Puramente visual — detectado
+// pelo pathname da URL, sem nenhuma mudança na autenticação/Supabase.
 export function LoginPage() {
   const { session, loading } = useAuth();
+  const location = useLocation();
+  const isAdminRoute = location.pathname === '/admin';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -89,8 +97,19 @@ export function LoginPage() {
         <div className="w-full max-w-[400px]">
           <img src={rodavoltLogoPreto} alt="Rodavolt" className="mb-8 h-10 w-auto sm:h-11" />
 
+          {isAdminRoute && (
+            <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-[#2389FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#2389FF]">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Acesso administrativo
+            </div>
+          )}
+
           <h1 className="text-2xl font-bold text-neutral-900 sm:text-[28px]">Bom ter você de volta.</h1>
-          <p className="mt-2 text-sm text-neutral-500">Acesse sua conta e acompanhe sua rotina.</p>
+          <p className="mt-2 text-sm text-neutral-500">
+            {isAdminRoute
+              ? 'Área restrita à administração da RodaVolt.'
+              : 'Acesse sua conta e acompanhe sua rotina.'}
+          </p>
 
           <form onSubmit={handleSubmit} className="mt-7 space-y-4">
             <div>
