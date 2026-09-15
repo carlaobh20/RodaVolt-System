@@ -36,12 +36,19 @@
   --color-brand-950: #0f2e57;
 }
 
+/* "light dark" aqui é o motivo real do fundo ainda aparecer preto na verificação: mesmo com
+   o dark: do Tailwind morto (acima), essa propriedade sozinha já autoriza o navegador a pintar
+   o fundo com a cor nativa "Canvas" do sistema operacional quando um elemento não define um
+   background explícito — e várias páginas do app (ex.: RecuperarSenhaPage) não definem bg no
+   <body> nem no container. Forçando "light" aqui, o navegador nunca usa o Canvas escuro do SO,
+   e o background do body abaixo garante um fundo claro explícito como rede de segurança. */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
+  background-color: #fafafa;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
