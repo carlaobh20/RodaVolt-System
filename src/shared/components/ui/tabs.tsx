@@ -22,7 +22,7 @@ export function Tabs({ items, defaultValue }: { items: TabItem[]; defaultValue?:
             className={cn(
               'border-b-2 px-3 py-2 text-sm font-medium transition-colors',
               active === item.value
-                ? 'border-emerald-600 text-emerald-700 dark:text-emerald-400'
+                ? 'border-brand-600 text-brand-700 dark:text-brand-400'
                 : 'border-transparent text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
             )}
           >

@@ -36,7 +36,7 @@ export function KpiCard({
   const classeCard = cn(
     'flex min-w-[168px] flex-1 flex-col gap-2 rounded-2xl border border-neutral-200 bg-white p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.05]',
     pending && 'opacity-70',
-    to && !pending && 'cursor-pointer hover:border-emerald-300 dark:hover:border-emerald-800'
+    to && !pending && 'cursor-pointer hover:border-brand-300 dark:hover:border-brand-800'
   );
 
   const conteudo = (

@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* Paleta oficial da marca RodaVolt (pedido do Carlos, 2026-09-15): antes desta mudança o app
+   inteiro (admin + motorista) usava "emerald" (verde) do Tailwind como cor de ação primária —
+   um resquício do template inicial, sem nenhuma ligação com a marca. Login e landing já usam
+   #2389FF / hover #1B6FDB; esta escala "brand" generaliza esses dois tons pro resto do app,
+   pra bg-brand-600/hover:bg-brand-700 virar o novo padrão em vez de emerald-600/emerald-700.
+   Verde (emerald) continua existindo no projeto só com sentido semântico de "sucesso"/"dado
+   real" (badge.tsx, toast.tsx, selo-dado.tsx) — isso foi mantido de propósito, não é a mesma
+   cor de marca e não deve virar azul (senão "sucesso" fica visualmente igual a "informação"). */
+@theme {
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #8fc0fd;
+  --color-brand-400: #5ea6fa;
+  --color-brand-500: #3b96ff;
+  --color-brand-600: #2389ff;
+  --color-brand-700: #1b6fdb;
+  --color-brand-800: #175bb0;
+  --color-brand-900: #154a8c;
+  --color-brand-950: #0f2e57;
+}
+
 :root {
   color-scheme: light dark;
 }

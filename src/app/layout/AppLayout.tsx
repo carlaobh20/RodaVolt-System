@@ -70,7 +70,7 @@ export function AppLayout() {
     <div className="flex min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <aside className="flex w-60 flex-col border-r border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
         <div className="px-4 py-5">
-          <span className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">RodaVolt</span>
+          <span className="text-lg font-semibold text-brand-600 dark:text-brand-400">RodaVolt</span>
         </div>
 
         <div className="px-2 pb-2">
@@ -97,7 +97,7 @@ export function AppLayout() {
                 cn(
                   'flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
+                    ? 'bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-400'
                     : 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800'
                 )
               }

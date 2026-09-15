@@ -40,13 +40,13 @@ function TabBar() {
               end={item.end}
               className={cn(
                 'relative flex flex-1 flex-col items-center gap-0.5 py-2 text-[11px] font-medium transition-colors',
-                ativo ? 'text-emerald-600 dark:text-emerald-400' : 'text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300',
+                ativo ? 'text-brand-600 dark:text-brand-400' : 'text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300',
               )}
             >
               <Icon className="h-5 w-5" />
               {item.label}
               {mostrarBadge && (
-                <span className="absolute right-1/2 top-1 translate-x-3 rounded-full bg-emerald-600 px-1.5 text-[10px] font-semibold leading-4 text-white">
+                <span className="absolute right-1/2 top-1 translate-x-3 rounded-full bg-brand-600 px-1.5 text-[10px] font-semibold leading-4 text-white">
                   {carrinho.quantidadeTotal}
                 </span>
               )}
@@ -67,7 +67,7 @@ export function AppLayoutMotorista() {
           style={{ paddingTop: 'env(safe-area-inset-top)' }}
         >
           <div className="mx-auto flex h-12 max-w-md items-center px-4">
-            <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">RodaVolt</span>
+            <span className="text-sm font-semibold text-brand-600 dark:text-brand-400">RodaVolt</span>
             <div className="ml-auto">
               <SinoNotificacoes />
             </div>
