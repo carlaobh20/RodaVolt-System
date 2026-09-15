@@ -35,3 +35,7 @@ dist-ssr
 # Gerados sob demanda antes de operações destrutivas em produção; nunca versionar.
 backup_pre_migrations_*/
 *.bundle
+
+# Lixo temporario local (lock files de git, pastas de saida do Claude) - nunca versionar
+_to_delete/
+Claude outputs/
