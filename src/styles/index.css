@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* Modernização pedida pelo Carlos (2026-09-15): o app inteiro tinha dezenas de classes
+   "dark:" espalhadas, nunca desenhadas com cuidado — resultado era um visual escuro,
+   apertado e inconsistente sempre que o navegador/SO do usuário estava em modo escuro
+   (ninguém escolhia isso dentro do app, era só o padrão do Windows/Chrome vazando pra
+   dentro). O pedido explícito agora é "limpa, bonita, clara" — então em vez de reescrever
+   tela por tela, a estratégia é desligar o dark mode automático do Tailwind na raiz:
+   redefinindo a variante "dark" para só valer dentro de um elemento com classe .dark (que
+   este projeto nunca aplica em lugar nenhum — grep confirma), toda classe dark: do código
+   vira morta, e o app renderiza sempre a versão clara, em qualquer navegador/SO. Não é
+   necessário apagar as classes dark: existentes; elas só passam a não fazer mais nada.
+   Se um dia quisermos oferecer modo escuro de verdade, é reativar isso com um toggle real
+   que aplique a classe .dark no <html> — não o padrão automático de hoje. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Paleta oficial da marca RodaVolt (pedido do Carlos, 2026-09-15): antes desta mudança o app
    inteiro (admin + motorista) usava "emerald" (verde) do Tailwind como cor de ação primária —
    um resquício do template inicial, sem nenhuma ligação com a marca. Login e landing já usam
