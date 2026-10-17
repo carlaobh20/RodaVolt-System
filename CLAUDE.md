@@ -1,5 +1,11 @@
 # CLAUDE.md — memória de trabalho do PrimeCharge OS
 
+> **Ambiente local em 17/10/2026:** o código agora está no Mac do Carlos, com acesso
+> direto ao GitHub. O fluxo vigente de edição/commit/push está em `AGENTS.md` e
+> `docs/DESENVOLVIMENTO-LOCAL.md`. Os caminhos de sandbox, a transferência por bundles
+> e os snapshots de branches/deploys abaixo são históricos. Preserve as regras de
+> domínio e confira o estado atual antes de agir.
+
 Leia este arquivo inteiro antes de fazer qualquer coisa. Ele existe porque o sandbox onde uma
 sessão de IA trabalha é temporário (pode resetar entre uma mensagem e outra, sem aviso) — o
 código de verdade vive no GitHub e no PC do Carlos, não neste container. Este arquivo é atualizado

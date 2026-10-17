@@ -2,6 +2,10 @@
 
 Sistema de gestão (ERP) para empresas de locação de veículos elétricos.
 
+**Edição local do RodaVolt:** veja [`docs/DESENVOLVIMENTO-LOCAL.md`](docs/DESENVOLVIMENTO-LOCAL.md)
+para pasta no Mac, GitHub, branches, variáveis de ambiente, validações e deploy.
+Use Node 22 (`.nvmrc`), `npm ci` e `npm run check` antes de publicar alterações.
+
 ## Status atual (2026-08-14)
 
 > Este resumo fica desatualizado rápido — a referência viva de "onde paramos exatamente" (commit
