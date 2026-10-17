@@ -49,12 +49,19 @@ VITE_SUPABASE_URL=<URL do projeto correto>
 VITE_SUPABASE_PUBLISHABLE_KEY=<chave pública desse projeto>
 ```
 
-**Pendência real:** o endereço Supabase presente no exemplo e no JavaScript público
-de produção, `ojvhiadjnxhhevoryjtu.supabase.co`, retornou `ENOTFOUND` nesta inspeção.
-Isso não prova que o projeto foi excluído: pode exigir localizar, reativar ou corrigir
-o projeto. A integração Supabase conectada lista somente `NewEncorpeiSaude` e recusou
-acesso ao projeto do RodaVolt. É preciso liberar o projeto correto à integração ou
-fornecer a URL atual e sua chave pública para concluir o teste de login e dados.
+**Configuração confirmada:** o projeto `ojvhiadjnxhhevoryjtu.supabase.co` está tanto
+no exemplo quanto no JavaScript público de produção. A chave pública do exemplo
+respondeu HTTP 200 no endpoint de configuração do Auth. A primeira tentativa no
+terminal falhou com `ENOTFOUND`; um resolvedor DNS público retornou os registros A
+e o teste com esses registros, mantendo a verificação TLS, funcionou. O navegador
+também alcançou o endpoint normalmente. Não foi necessário trocar URL ou chave,
+reativar banco nem alterar o DNS do computador.
+
+A integração Supabase conectada lista somente `NewEncorpeiSaude` e recusou acesso
+administrativo ao projeto do RodaVolt. Isso não impede o frontend de usar sua chave
+pública. Para administrar schema ou configuração do projeto por aqui futuramente,
+será necessário liberar o RodaVolt à integração. Login com usuário e fluxos com dados
+ainda precisam de uma sessão de teste do app; nenhum login foi enviado neste setup.
 
 Não coloque `service_role`, `sb_secret_*`, senha de banco ou token de GitHub/Vercel
 em variáveis `VITE_*`. Não use o banco de outro app como substituto. Ao confirmar o
@@ -109,8 +116,11 @@ Regras de proteção não foram alteradas neste setup.
 - O lint apresentou seis warnings preexistentes; o build avisou sobre chunks acima
   de 500 kB. Não houve alteração de produto para resolver esses avisos neste setup.
 - `.env.local` e `.vercel/project.json` são ignorados pelo Git.
-- GitHub autenticado como `carlaobh20`; fetch e leitura dos deployments confirmados.
-- Login e fluxos com dados permanecem pendentes da conexão Supabase correta.
+- GitHub autenticado como `carlaobh20`; commit e push de preparação em `dev`
+  confirmados. A primeira CI passou e os dois previews Vercel concluíram com sucesso
+  para o commit `7aa559e`.
+- Supabase Auth acessível; chave pública validada por HTTP 200, sem ler dados.
+- Login autenticado e fluxos com dados não foram exercitados.
 - Acesso de gerenciamento à Vercel ainda depende da instalação/conexão da integração.
 
 Nenhuma migration ou seed foi executada contra o banco remoto. O histórico de
